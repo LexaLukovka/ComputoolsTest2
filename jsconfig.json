@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "src/*"
+      ],
+      "test/*": [
+        "test/*"
+      ],
+      "underscore": [
+        "lodash"
+      ]
+    },
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "checkJs": true
+  },
+  "typeAcquisition": {
+    "include": [
+      "lodash"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
