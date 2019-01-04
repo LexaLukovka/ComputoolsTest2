@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { object } from 'prop-types'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import { number, object } from 'prop-types'
+import connector from './connector'
 
 const styles = StyleSheet.create({
   root: {
@@ -26,17 +27,36 @@ class IndexScreen extends Component {
     title: 'Welcome',
   }
 
+  handlePlus = () => {
+    const { actions } = this.props
+    actions.counter.plus()
+  }
+
+  handleMinus = () => {
+    const { actions } = this.props
+    actions.counter.minus()
+  }
+
   render() {
+    const { counter } = this.props
+
     return (
       <View style={styles.root}>
         <View style={styles.container}>
-          <Text style={styles.welcome}>Welcome</Text>
+          <Text style={styles.welcome}>{counter}</Text>
+          <View style={styles.flex}>
+            <Button title="-" onPress={this.handleMinus} disabled={counter <= 0} />
+            <Button title="+" onPress={this.handlePlus} />
+          </View>
         </View>
       </View>
     )
   }
 }
 
-IndexScreen.propTypes = {}
+IndexScreen.propTypes = {
+  actions: object.isRequired,
+  counter: number.isRequired,
+}
 
-export default IndexScreen
+export default connector(IndexScreen)

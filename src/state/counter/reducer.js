@@ -1,10 +1,7 @@
 import { MINUS, PLUS } from './action'
 
 const initialState = {
-  user: null,
-  errors: [],
-  error: false,
-  loading: false,
+  counter: 0,
 }
 
 const counterReducer = (state = initialState, { type }) => {
@@ -12,11 +9,13 @@ const counterReducer = (state = initialState, { type }) => {
     case PLUS:
       return {
         ...state,
+        counter: state.counter + 1,
       }
 
     case MINUS:
       return {
         ...state,
+        counter: state.counter - 1,
       }
 
     default:
